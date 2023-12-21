@@ -17,10 +17,10 @@ unzip_pkgs_sources = function(zip_dir, dest_dir=zip_dir) {
   }
 }
 
-install_pkg_sources = function(parent_dir) {
+install_pkg_sources = function(parent_dir, pkgs) {
   library(remotes)
-  dirs = list.dirs(parent_dir,full.names = TRUE,recursive = FALSE)
-  for (dir in dirs) {
+  for (pkg in pkgs) {
+    dir = file.path(parent_dir, pkg)
     remotes::install_local(dir, upgrade="never", force=TRUE)
   }  
 }
@@ -34,4 +34,4 @@ download_repbox_pkg_zip_from_github(pkg_dir, user="repboxr", pkgs = pkgs)
 cat("\n\nExtract packages ZIP...\n\n")
 unzip_pkgs_sources(pkg_dir)
 cat("\n\nBuild and install packages...\n\n")
-install_pkg_sources(pkg_dir)
+install_pkg_sources(pkg_dir, pkgs)
