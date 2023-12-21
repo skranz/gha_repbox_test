@@ -36,6 +36,7 @@ cat("\n\nExtract packages ZIP...\n\n")
 unzip_pkgs_sources(pkg_dir)
 
 cat("\n\nDirectories in ", pkg_dir,"\n\n")
-list.dirs(pkg_dir,recursive = FALSE)
+print(list.dirs(pkg_dir,recursive = FALSE,full.names = FALSE))
+
 cat("\n\nBuild and install packages...\n\n")
 install_pkg_sources(pkg_dir, pkgs)
