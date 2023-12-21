@@ -1,7 +1,6 @@
 # Here we can add some custom package installations
 
 download_repbox_pkg_zip_from_github = function(dest_dir, user="repboxr", pkgs,  branch="main") {
-  restore.point("download_repbox_pkg_zip_from_github")
   urls = paste0("http://github.com/",user,"/",pkgs,"/archive/",branch,".zip")
   files = paste0(dest_dir, "/",pkgs,".zip")
   if (!dir.exists(dest_dir)) stop("Destination directory does not exist.")
@@ -12,7 +11,6 @@ download_repbox_pkg_zip_from_github = function(dest_dir, user="repboxr", pkgs,  
 }
 
 unzip_pkgs_sources = function(zip_dir, dest_dir=zip_dir) {
-  restore.point("unzip_pkgs_sources")
   files = list.files(zip_dir, glob2rx("*.zip"),ignore.case = TRUE,full.names = TRUE)
   for (file in files) {
     unzip(file,exdir = zip_dir)
@@ -21,7 +19,6 @@ unzip_pkgs_sources = function(zip_dir, dest_dir=zip_dir) {
 
 install_pkg_sources = function(parent_dir) {
   library(remotes)
-  restore.point("install_pkgs_sources")
   dirs = list.dirs(parent_dir,full.names = TRUE,recursive = FALSE)
   for (dir in dirs) {
     remotes::install_local(dir, upgrade="never", force=TRUE)
