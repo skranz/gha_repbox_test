@@ -1,3 +1,3 @@
-# Repbox via Github Actions
+# Repbox Test via Github Actions
 
-A first internal example.
+A test to check changes in repbox packages. Try to perform a simple repbox analysis. Downloads current package versions directly from Github.
