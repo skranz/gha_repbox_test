@@ -22,6 +22,9 @@ install_pkg_sources = function(parent_dir, pkgs) {
   library(remotes)
   for (pkg in pkgs) {
     dir = file.path(parent_dir, pkg)
+    if (!dir.exists(dir)) {
+      dir = paste0(dir,"-main")
+    }
     remotes::install_local(dir, upgrade="never", force=TRUE)
   }  
 }
