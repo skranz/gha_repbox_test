@@ -52,4 +52,4 @@ cat("\n\nDirectories in ", pkg_dir,"\n\n")
 print(list.dirs(pkg_dir,recursive = FALSE,full.names = FALSE))
 
 cat("\n\nBuild and install packages...\n\n")
-install_pkg_sources(pkg_dir, pkgs)
+#install_pkg_sources(pkg_dir, pkgs)
