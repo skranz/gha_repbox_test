@@ -65,16 +65,16 @@ run = function() {
   repbox_init_project(project_dir,sup_zip = sup_zip,pdf_files = pdf_files, html_files = html_files)
   
   # List files in sup folder
-
-  cat("\n/root:\n")
-  cat(paste0(list.dirs("/root", recursive=FALSE), collapse="\n"))
-  
-  cat("\nproject_dir:\n")
-  print(list.dirs("/root/projects/project"))
-  cat("\n\n\nsup_dir:\n")
-  print(list.files("/root/projects/project/sup",recursive = TRUE))
-  
-  print(str.left.of)
+# 
+#   cat("\n/root:\n")
+#   cat(paste0(list.dirs("/root", recursive=FALSE), collapse="\n"))
+#   
+#   cat("\nproject_dir:\n")
+#   print(list.dirs("/root/projects/project"))
+#   cat("\n\n\nsup_dir:\n")
+#   print(list.files("/root/projects/project/sup",recursive = TRUE))
+#   
+#   print(str.left.of)
   
   # Just print some size information
   all.files = list.files(file.path(project_dir, "org"),glob2rx("*.*"),recursive = TRUE, full.names = TRUE)
@@ -92,16 +92,13 @@ run = function() {
   #dir.create("/root/output")
   
   if (isTRUE(io_config$output$encryption)) {
-    cat("\nStore results as encrypted 7z")
+    cat("\nStore results as encrypted 7z\n")
     key = Sys.getenv("REPBOX_ENCRYPT_KEY")
-    to.7z("/root/projects/project/art","/root/output/art.7z",password = key)
+    to.7z("/root/projects/project/reports","/root/output/results.7z",password = key)
   } else {
-    cat("\nStore results as 7z")
+    cat("\nStore results as 7z\n")
     to.7z("/root/projects/project/reports","/root/output/results.7z")
   }
-  
-  key = Sys.getenv("REPBOX_ENCRYPT_KEY")
-  #to.7z("/root/projects/project/reports","/root/output/reports.7z",password = key)
   
   cat(paste0("\nAnalysis finished after ", round(difftime(Sys.time(),start.time, units="mins"),1)," minutes.\n"))
   
