@@ -3,7 +3,7 @@
 
 run = function() {
   cat("\nInstall R packages specified in install.R\n")
-  #source(file.path("~/scripts/install.R"))
+  source(file.path("~/scripts/install.R"))
   
   cat("\n\nCheck Stata License\n\n")
   license.file = "/usr/local/stata/stata.lic"
