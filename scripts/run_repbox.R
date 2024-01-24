@@ -5,6 +5,9 @@ run = function() {
   cat("\nInstall R packages specified in install.R\n")
   source(file.path("~/scripts/install.R"))
   
+  cat("\nCopy repbox ado files")
+  repboxStata::copy_repbox_ado_files(normalizePath("~/ado/plus"))
+  
   cat("\n\nCheck Stata License\n\n")
   license.file = "/usr/local/stata/stata.lic"
   if (!file.exists(license.file)) {
