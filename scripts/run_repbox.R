@@ -6,6 +6,7 @@ run = function() {
   source(file.path("~/scripts/install.R"))
   
   cat("\nCopy repbox ado files")
+  library(repboxStata)
   repboxStata::copy_repbox_ado_files(normalizePath("~/ado/plus"))
   
   cat("\n\nCheck Stata License\n\n")
